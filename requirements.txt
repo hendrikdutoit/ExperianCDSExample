@@ -10,3 +10,12 @@ Path
 beetools
 configparserext
 termcolor
+sqldbwrpr
+mysql-connector
+mysqlclient
+pyodbc
+csvwrpr
+displayfx
+fixdate
+displayfx
+fixdate

@@ -14,3 +14,8 @@ pytest-cov
 sphinx
 sphinx-autobuild
 sphinx-rtd-theme
+sqldbwrpr
+mysql-connector
+mysqlclient
+pyodbc
+csvwrpr
