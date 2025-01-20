@@ -1,4 +1,3 @@
-
 '''Project Short Description (default ini)
 
 Project long description or extended summary goes in here (default ini)
@@ -11,6 +10,7 @@ import argparse
 import configparserext
 import logging
 from pathlib import Path
+
 # import sys
 from termcolor import colored
 from beetools import beeutils
@@ -25,15 +25,10 @@ _PROJ_NAME = _PROJ_PATH.stem
 
 
 class ExperianCDSExample:
-    '''Class description
-    '''
-    def __init__(
-        self,
-        p_ini_pth,
-        p_logger = False
-    ):
-        '''Method description
-        '''
+    '''Class description'''
+
+    def __init__(self, p_ini_pth, p_logger=False):
+        '''Method description'''
         self.success = True
         self.ini_pth = p_ini_pth
         self.logger_name = None
@@ -41,12 +36,11 @@ class ExperianCDSExample:
         if p_logger:
             self.logger_name = "ExperianCDSExample"
             self.logger = logging.getLogger(self.logger_name)
-        self.ini = configparserext.ConfigParserExt(inline_comment_prefixes = '#')
+        self.ini = configparserext.ConfigParserExt(inline_comment_prefixes='#')
         self.verbose = False
 
         self.ini.read([self.ini_pth])
         self.proj_root_dir = _PROJ_PATH.parents[1]
-
 
         self.admin_user = ['root', 'En0l@Gay']
         self.db_name = 'ExperianPersonel'
@@ -61,12 +55,18 @@ class ExperianCDSExample:
             [self.new_users[0][0], self.new_users[0][2], '*', '*', 'ALL'],
             [self.new_users[1][0], self.new_users[1][2], '*', '*', 'SELECT', 'INSERT'],
         ]
-        self.test_data_folder = Path(__file__).absolute().parents[2] / _PROJ_NAME / 'data'
+        self.test_data_folder = (
+            Path(__file__).absolute().parents[2] / _PROJ_NAME / 'data'
+        )
         self.people_path = Path(self.test_data_folder, 'Import', 'People.csv')
         self.address_path = Path(self.test_data_folder, 'Import', 'Address.csv')
         self.phone_path = Path(self.test_data_folder, 'Import', 'Phone.csv')
-        self.people_phone_path = Path(self.test_data_folder, 'Import', 'PeoplePhone.csv')
-        self.people_address_path = Path(self.test_data_folder, 'Import', 'PeopleAddress.csv')
+        self.people_phone_path = Path(
+            self.test_data_folder, 'Import', 'PeoplePhone.csv'
+        )
+        self.people_address_path = Path(
+            self.test_data_folder, 'Import', 'PeopleAddress.csv'
+        )
         self.export_path = self.test_data_folder / 'Export'
         self.db_structure = {
             'People': {
@@ -122,21 +122,21 @@ class ExperianCDSExample:
                     'Comment': 'Name of the member',
                 },
                 'DOB': {
-                    'Type'           : ['date'],
-                    'Params'         : {
+                    'Type': ['date'],
+                    'Params': {
                         'PrimaryKey': ['', ''],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : 'Y',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': 'Y',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Name of the member',
+                    'Comment': 'Name of the member',
                 },
             },
             'Address': {
@@ -192,38 +192,38 @@ class ExperianCDSExample:
                     'Comment': 'Name of country',
                 },
                 'City': {
-                    'Type'           : ['varchar', 45],
-                    'Params'         : {
+                    'Type': ['varchar', 45],
+                    'Params': {
                         'PrimaryKey': ['', ''],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : '',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': '',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Name of country',
+                    'Comment': 'Name of country',
                 },
                 'Code': {
-                    'Type'           : ['varchar', 4],
-                    'Params'         : {
+                    'Type': ['varchar', 4],
+                    'Params': {
                         'PrimaryKey': ['', ''],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : '',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': '',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : '',
+                    'Comment': '',
                 },
             },
             'Phone': {
@@ -263,75 +263,75 @@ class ExperianCDSExample:
                 },
             },
             'PeoplePhone': {
-                'SosSec' : {
-                    'Type'           : ['bigint'],
-                    'Params'         : {
+                'SosSec': {
+                    'Type': ['bigint'],
+                    'Params': {
                         'PrimaryKey': ['Y', 'A'],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : 'Y',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': 'Y',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Sosial security nr filled with zeros',
+                    'Comment': 'Sosial security nr filled with zeros',
                 },
                 'PhoneId': {
-                    'Type'           : ['int'],
-                    'Params'         : {
+                    'Type': ['int'],
+                    'Params': {
                         'PrimaryKey': ['Y', 'A'],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : 'Y',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': 'Y',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Surname of member',
+                    'Comment': 'Surname of member',
                 },
             },
             'PeopleAddress': {
-                'SosSec'   : {
-                    'Type'           : ['bigint'],
-                    'Params'         : {
+                'SosSec': {
+                    'Type': ['bigint'],
+                    'Params': {
                         'PrimaryKey': ['Y', 'A'],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : 'Y',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': 'Y',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Sosial security nr filled with zeros',
+                    'Comment': 'Sosial security nr filled with zeros',
                 },
                 'AddressId': {
-                    'Type'           : ['int'],
-                    'Params'         : {
+                    'Type': ['int'],
+                    'Params': {
                         'PrimaryKey': ['Y', 'A'],
-                        'FKey'      : [],
-                        'Index'     : [],
-                        'NN'        : 'Y',
-                        'B'         : '',
-                        'UN'        : '',
-                        'ZF'        : '',
-                        'AI'        : '',
-                        'G'         : '',
-                        'DEF'       : '',
+                        'FKey': [],
+                        'Index': [],
+                        'NN': 'Y',
+                        'B': '',
+                        'UN': '',
+                        'ZF': '',
+                        'AI': '',
+                        'G': '',
+                        'DEF': '',
                     },
                     'Possible Values': '',
-                    'Comment'        : 'Surname of member',
+                    'Comment': 'Surname of member',
                 },
             },
         }
@@ -350,16 +350,16 @@ class ExperianCDSExample:
         print('\nTest initialization, creation and population of database...')
         self.my_sql_db = MySQL(
             _PROJ_NAME,
-            p_host_name = self.db_host_PROJ_NAME,
-            p_user_name = self.db_user[0],
-            p_password = self.db_user[1],
-            p_user_rights = self.new_user_rights,
-            p_recreate_db = True,
-            p_db_name = self.db_name,
-            p_db_structure = self.db_structure,
-            p_batch_size = 1,
-            p_admin_userName = self.admin_user[0],
-            p_admin_user_password = self.admin_user[1],
+            p_host_name=self.db_host_PROJ_NAME,
+            p_user_name=self.db_user[0],
+            p_password=self.db_user[1],
+            p_user_rights=self.new_user_rights,
+            p_recreate_db=True,
+            p_db_name=self.db_name,
+            p_db_structure=self.db_structure,
+            p_batch_size=1,
+            p_admin_userName=self.admin_user[0],
+            p_admin_user_password=self.admin_user[1],
         )
         # self.my_sql_db.close()
 
@@ -374,23 +374,25 @@ class ExperianCDSExample:
         self.my_sql_db.import_csv('PeoplePhone', str(self.people_phone_path))
         self.my_sql_db.import_csv('PeopleAddress', str(self.people_address_path))
         pass
-    
+
     def export_people(self):
         dest_pth = self.export_path / 'PeopleExp.csv'
         self.my_sql_db.export_to_csv(str(dest_pth), 'People')
         pass
-    
+
     def people_in_30s(self):
         dest_pth = self.export_path / 'People30sExp.csv'
         sql_qry = '''SELECT People.Name, People.Surname, Phone.Nr FROM People
             JOIN PeoplePhone ON People.SosSec = PeoplePhone.SosSec
             JOIN Phone on PeoplePhone.PhoneId = Phone.PhoneId
                 WHERE People.DOB > '1983-01-01' AND People.DOB < '1992-12-31';'''
-        self.my_sql_db.export_to_csv(str(dest_pth), 'PeoplePhone', p_delimeter = ',', p_sql_query = ['*', sql_qry])
+        self.my_sql_db.export_to_csv(
+            str(dest_pth), 'PeoplePhone', p_delimeter=',', p_sql_query=['*', sql_qry]
+        )
         pass
-    
+
     def group_by_age(self):
-        sql_str ='''SELECT DOB FROM People'''
+        sql_str = '''SELECT DOB FROM People'''
         self.my_sql_db.cur.execute(sql_str)
         people_res = self.my_sql_db.cur.fetchall()
         age_groups = {}
@@ -398,19 +400,19 @@ class ExperianCDSExample:
             age = self.calc_age(rec[0])
             age_group = self.get_age_group(age)
             if age_group not in age_groups:
-                age_groups[age_group] = { 'addreses' : 1, 'phonenrs' : 1}
+                age_groups[age_group] = {'addreses': 1, 'phonenrs': 1}
             else:
-                age_groups[age_group]['addreses'] +=1
-                age_groups[age_group]['phonenrs'] +=1
+                age_groups[age_group]['addreses'] += 1
+                age_groups[age_group]['phonenrs'] += 1
             pass
         pass
-    
+
     @staticmethod
     def calc_age(dob):
         # today = datetime.datetime.now().year
         age = datetime.datetime.now().year - dob.year
         return age
-    
+
     @staticmethod
     def get_age_group(age):
         if age <= 5:
@@ -446,10 +448,8 @@ class ExperianCDSExample:
 
         pass
 
-
     def run(self):
-        '''Method description
-        '''
+        '''Method description'''
         self.create_db()
         self.import_data()
         # self.export_people()
@@ -462,11 +462,13 @@ class ExperianCDSExample:
 def init_logger():
     logger = logging.getLogger(ExperianCDSExample)
     logger.setLevel(beeutils.DEF_LOG_LEV)
-    file_handle = logging.FileHandler(beeutils.LOG_FILE_NAME, mode = 'w')
+    file_handle = logging.FileHandler(beeutils.LOG_FILE_NAME, mode='w')
     file_handle.setLevel(beeutils.DEF_LOG_LEV_FILE)
     console_handle = logging.StreamHandler()
     console_handle.setLevel(beeutils.DEF_LOG_LEV_CON)
-    file_format = logging.Formatter(beeutils.LOG_FILE_FORMAT, datefmt = beeutils.LOG_DATE_FORMAT)
+    file_format = logging.Formatter(
+        beeutils.LOG_FILE_FORMAT, datefmt=beeutils.LOG_DATE_FORMAT
+    )
     console_format = logging.Formatter(beeutils.LOG_CONSOLE_FORMAT)
     file_handle.setFormatter(file_format)
     console_handle.setFormatter(console_format)
@@ -475,7 +477,7 @@ def init_logger():
 
 
 def read_args():
-    arg_parser = argparse.ArgumentParser(description = 'Get configuration parameters')
+    arg_parser = argparse.ArgumentParser(description='Get configuration parameters')
     # arg_parser.add_argument(
     #     'project_name',
     #     nargs = '+',
@@ -484,8 +486,8 @@ def read_args():
     arg_parser.add_argument(
         '-c',
         '--config-path',
-        help = 'Config file name',
-        default = arg_parser.prog[:arg_parser.prog.find('.') + 1] + 'ini'
+        help='Config file name',
+        default=arg_parser.prog[: arg_parser.prog.find('.') + 1] + 'ini',
     )
     # arg_parser.add_argument(
     #     '-e',
@@ -498,6 +500,7 @@ def read_args():
     ini_path = args.config_path
     # project_name = args.project_name[0]
     return ini_path
+
 
 if __name__ == '__main__':
     ini_pth = read_args()
