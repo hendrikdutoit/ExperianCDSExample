@@ -1,4 +1,3 @@
-
 '''Testing experiancdsexample__init__()'''
 
 from pathlib import Path
@@ -21,7 +20,9 @@ class TestExperianCDSExample:
     def test__init__(self, env_setup_self_destruct):
         """Assert class __init__"""
         env_setup = env_setup_self_destruct
-        t_experiancdsexample = experiancdsexample.ExperianCDSExample(env_setup.dir, True)
+        t_experiancdsexample = experiancdsexample.ExperianCDSExample(
+            env_setup.dir, True
+        )
 
         assert t_experiancdsexample.success
         pass
@@ -29,9 +30,12 @@ class TestExperianCDSExample:
     def test_method_1(self, env_setup_self_destruct):
         """Assert class __init__"""
         env_setup = env_setup_self_destruct
-        t_experiancdsexample = experiancdsexample.ExperianCDSExample("ExperianCDSExample", env_setup.dir)
+        t_experiancdsexample = experiancdsexample.ExperianCDSExample(
+            "ExperianCDSExample", env_setup.dir
+        )
 
         assert t_experiancdsexample.method_1()
         pass
+
 
 del b_tls
